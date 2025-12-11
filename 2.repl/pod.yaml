@@ -1,0 +1,15 @@
+---
+# file: practice/2.application-abstractions/1.pod/pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-1
+  labels: 
+    app: my-app
+spec:
+  containers:
+  - image: nginx:1.20
+    name: nginx
+    ports:
+    - containerPort: 80
+...
