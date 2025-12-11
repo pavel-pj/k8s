@@ -67,3 +67,11 @@ kubectl -n student apply -f deployment.yaml
 ```bash
 kubectl -n student get pod
 ```
+
+
+
+## CONFIGURATIONS 
+#### get all env from POD
+```bash
+kubectl exec -it my-deployment-6f95497496-bztpj  -- env
+```
