@@ -12,7 +12,7 @@ kubectl config view
 
 
 
-2. replicas
+### 2. replicaSet
 
 
 #### delete
@@ -38,4 +38,32 @@ kubectl set image replicaset my-replicaset nginx=nginx:1.21
 #### get a parametr as json
 ```bash
 kubectl get po my-replicaset-fe43d -o=jsonpath='{.spec.containers[*].image}{"\n"}'
+
+```
+
+### 3. Deployment
+#### set params to deployment
+```bash
+kubectl set image deployment my-deployment '*=nginx:1.13'
+```
+
+
+#### 4. Namespaces
+
+#### get system namespaces
+```bash
+kubectl -n kube-system get pod
+```
+
+#### create
+```bash
+kubectl create ns student
+```
+#### creating deploy in the new namespace
+```bash
+kubectl -n student apply -f deployment.yaml 
+```
+#### get po from namespace 
+```bash
+kubectl -n student get pod
 ```
