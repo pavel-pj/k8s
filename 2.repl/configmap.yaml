@@ -1,0 +1,10 @@
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap-env
+data:
+  dbhost: "192.33.22.2"  
+  dbname: "larave"
+...
