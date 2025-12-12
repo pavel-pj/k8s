@@ -19,9 +19,12 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: USERNAME
+        - name: test204
           value: user200 
         envFrom:
         - configMapRef:
-            name: my-configmap-env   
+            name: my-configmap-env 
+        - secretRef:
+            name: my-secret     
+             
 ...

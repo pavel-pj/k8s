@@ -75,3 +75,24 @@ kubectl -n student get pod
 ```bash
 kubectl exec -it my-deployment-6f95497496-bztpj  -- env
 ```
+
+#### create configmap
+```bash
+kubectl create -f configmap.yaml
+```
+
+#### see config 
+```bash
+kubectl get cm my-configmap-env -o yaml
+```
+#### or : 
+```bash
+kubectl describe cm my-configmap-env
+```
+
+#### port-forwar
+allow to see 80 port in localhost 
+```bash
+kubectl port-forward my-deployment-6cb87ccf6c-8nc5v 8080:80 &
+curl 127.0.0.1:8080
+```
