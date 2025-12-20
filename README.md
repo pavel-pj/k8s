@@ -96,3 +96,33 @@ allow to see 80 port in localhost
 kubectl port-forward my-deployment-6cb87ccf6c-8nc5v 8080:80 &
 curl 127.0.0.1:8080
 ```
+
+
+## 3.pvc 
+
+#### Создает PersistentVolumeClaim в Minikube
+
+```bash
+kubectl apply -f .
+```
+
+#### данные будут связаны черех pod, /data ( это видно в deployment volume)
+```bash
+kubectl get pod
+kubectl exec -it <pod-name> -- bash
+touch /data/test-file
+```
+
+#### файл будет сохранен на физической ноде, то есть в миникубе
+#### мы увидим файл который был создан в кластере
+```bash
+minikube ssh
+ls -l /local/pv1
+```
+
+#### при удалении pod и пересоздании volume сохраняется
+#### файл будет виден и на ноде и в кластере 
+```bash
+kubectl delete .
+kubectl apply -f .
+``` 
