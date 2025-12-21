@@ -126,3 +126,42 @@ ls -l /local/pv1
 kubectl delete .
 kubectl apply -f .
 ``` 
+
+
+
+## SERVICES
+#### should be seen probabilities - 0.5000 - if 2 pods only ONE time, if 3 pods  - 0.333 - twice
+```bash
+minikube ssh
+iptables -t nat -S
+```
+#### shows all pods with IP
+```bash
+kubectl get pods -o wide
+```
+
+### create noPORT service
+#### you can connect to application using a port from 30000 - 32767
+```bash
+kubectl create -f nodeport.yaml
+kubectl get svc 
+my-service-np   NodePort    10.101.26.244   <none>        80:31596/TCP   8s
+curl $(minikube ip):31596
+```
+
+
+
+Способ 1: Добавить в /etc/hosts (самый простой)
+bash
+
+# Узнайте IP Minikube
+MINIKUBE_IP=$(minikube ip)
+echo "Minikube IP: $MINIKUBE_IP"
+
+# Добавьте запись (требует sudo)
+echo "$MINIKUBE_IP myapp.local" | sudo tee -a /etc/hosts
+
+# Проверьте
+ping -c 1 myapp.local
+
+
